@@ -11,6 +11,7 @@
   </head>
 
   <body>
+<%# tag::loginLogout[] %>
     <% if !session[:user] %>
       <%= form_tag('/auth/my_provider', method: 'post', data: {turbo: false}) do %>
         <button type='submit'>Login</button>
@@ -18,6 +19,7 @@
     <% else %>
       Welcome <%= session[:user]['email'] %> | <%= link_to 'Logout', '/logout' %>
     <% end %>
+<%# end::loginLogout[] %>
 
     <%= yield %>
   </body>
