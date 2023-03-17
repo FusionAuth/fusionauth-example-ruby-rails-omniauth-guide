@@ -72,5 +72,5 @@ Rails.application.configure do
   # fusionauth oidc configuration
   config.x.fusionauth.issuer = "http://localhost:9011"
   config.x.fusionauth.client_id = "e9fdb985-9173-4e01-9d73-ac2d60d1dc8e"
-#tag::oidcConfig[]
+#end::oidcConfig[]
 end
