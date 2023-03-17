@@ -1,10 +1,24 @@
+
+# only if you want a link instead of a button for login
+#OmniAuth.config.allowed_request_methods = [:post, :get]
+
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :openid_connect, name: :my_provider,
-           issuer: 'http://localhost:9011',
-           client_options: {
-             identifier: 'e9fdb985-9173-4e01-9d73-ac2d60d1dc8e',
-             secret: 'change-this-in-production-to-be-a-real-secret',
-             redirect_uri: 'http://localhost:3000/auth/my_provider/callback',
-             scope: 'openid profile email'
-           }
+  provider :openid_connect,
+  name: :my_provider,
+  scope: [:openid],
+  response_type: :code,
+  issuer: Rails.configuration.x.fusionauth.issuer,
+  ssl: false,
+  client_options: {
+    # discovery doesn't work with local development
+    authorization_endpoint: Rails.configuration.x.fusionauth.issuer+"/oauth2/authorize",
+    token_endpoint: Rails.configuration.x.fusionauth.issuer+"/oauth2/token",
+    userinfo_endpoint: Rails.configuration.x.fusionauth.issuer+"/oauth2/userinfo",
+    jwks_uri: Rails.configuration.x.fusionauth.issuer+"/.well-known/jwks.json",
+    identifier: Rails.configuration.x.fusionauth.client_id,
+    secret: ENV["OP_SECRET_KEY"],
+    redirect_uri: 'http://localhost:3000/auth/my_provider/callback',
+    send_nonce: false
+  }
 end
+
