@@ -1,24 +1,3 @@
-# README
+This is an example app for the FusionAuth ruby rails omniauth guide.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Read more here: https://fusionauth.io/docs/v1/tech/tutorials/integrate-ruby-rails
